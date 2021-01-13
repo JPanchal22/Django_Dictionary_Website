@@ -1,0 +1,37 @@
+{% extends "Dictionary/base.html" %}
+{% load static %}
+
+{% block title %}Meaning{% endblock %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="container2">
+        <p><strong> Meaning of "{{word}}":</strong> {{word_meaning}}</p> 
+
+        <p><strong>Synonyms for "{{word}}":</strong>
+            {% for word_synonym in synonyms %}
+                {% if word_synonym != synonyms|last %} 
+                    {{word_synonym}}|
+                {% else %}
+                    {{word_synonym}}
+                {% endif %}
+            {% endfor %}
+        </p>  
+            
+        <p><strong>Antonyms for "{{word}}":</strong>
+            {% for word_antonym in antonyms %}
+                {% if word_antonym != antonyms|last %} 
+                    {{word_antonym}}|
+                {% else %}
+                    {{word_antonym}}
+                {% endif %}
+            {% endfor %}
+        </p>   
+    </div>
+
+    <i class="fab fa-github"></i>
+    
+{% endblock %}
